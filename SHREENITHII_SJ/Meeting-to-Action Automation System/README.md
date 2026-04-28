@@ -1,0 +1,3 @@
+This project implements a multi-agent system using CrewAI to transform raw meeting notes into clear and actionable outputs. It uses multiple agents with defined roles such as summarizing discussions, extracting tasks, assigning responsibilities, and planning execution with priorities and deadlines.
+
+The system follows a sequential workflow where each agent processes and refines the output from the previous step, resulting in a structured final report. This approach reflects real-world scenarios where meetings need to be converted into clear action plans for execution.
