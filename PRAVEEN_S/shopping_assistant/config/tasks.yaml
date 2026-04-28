@@ -1,0 +1,26 @@
+research_task:
+  description: >
+    Search for 3 different models of {product_name} that cost approximately {price_range}. 
+    Identify their full names, current market prices, and 3 key technical features for each.
+  expected_output: >
+    A structured list of 3 candidate products with their names, prices, and specs.
+  agent: product_hunter
+
+analysis_task:
+  description: >
+    Take the 3 products found by the Product Research Specialist and search for 
+    real-world user feedback. Find at least 2 Pros and 2 Cons for each model.
+  expected_output: >
+    A detailed summary of user sentiment, highlighting major strengths and 
+    common complaints for each of the 3 products.
+  agent: review_analyst
+
+final_report_task:
+  description: >
+    Review the technical specs from the research task and the sentiment from 
+    the analysis task. Choose the #1 best option for a user looking for {product_name}.
+    Explain clearly why this model won over the others.
+  expected_output: >
+    A final buying guide in Markdown format. It should include a 'Winner' section, 
+    a comparison table, and a 'Why we chose this' explanation.
+  agent: final_auditor
