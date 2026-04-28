@@ -1,0 +1,3 @@
+This project implements a Candidate Evaluation System using CrewAI, where multiple agents collaborate to analyze a job description and a candidate profile. The system extracts required skills from the job description, identifies candidate capabilities, compares both, and provides a structured evaluation along with a hiring recommendation.
+
+Each agent is assigned a specific role such as analyzing job requirements, evaluating candidate skills, matching both, and making a final decision. The workflow is designed sequentially, allowing outputs from one stage to be passed to the next for refined analysis.
