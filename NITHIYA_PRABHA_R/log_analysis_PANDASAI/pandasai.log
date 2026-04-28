@@ -1,0 +1,2020 @@
+2026-04-28 13:56:09 [INFO] Question: Show first 10 rows
+2026-04-28 13:56:23 [INFO] Question: Give summary statistics
+2026-04-28 14:05:04 [INFO] Question: show first 10 rows
+2026-04-28 14:05:05 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:05:05 [INFO] Prompt ID: a7767d2d-7f8d-4d4e-9dcd-2a0f4b15c986
+2026-04-28 14:05:06 [INFO] Generating new code...
+2026-04-28 14:05:06 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show first 10 rows
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:05:07 [INFO] An error occurred during code generation: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+2026-04-28 14:05:07 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:05:07 [INFO] An error occurred during code generation: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+2026-04-28 14:05:07 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Retrying Code Generation (1/3)...
+2026-04-28 14:05:07 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:05:07 [INFO] An error occurred during code generation: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+2026-04-28 14:05:07 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Retrying Code Generation (2/3)...
+2026-04-28 14:05:07 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:05:07 [INFO] An error occurred during code generation: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+2026-04-28 14:05:07 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Retrying Code Generation (3/3)...
+2026-04-28 14:05:07 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:05:07 [INFO] An error occurred during code generation: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+2026-04-28 14:05:07 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type GeneratePythonCodeWithSQLPrompt is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 27, in call
+    response = requests.post(url, headers=headers, json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\sessions.py", line 487, in prepare_request
+    p.prepare(
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 372, in prepare
+    self.prepare_body(data, files, json)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\requests\models.py", line 512, in prepare_body
+    body = complexjson.dumps(json, allow_nan=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+
+2026-04-28 14:05:07 [INFO] Maximum retry attempts exceeded. Last error: Object of type CorrectExecuteSQLQueryUsageErrorPrompt is not JSON serializable
+2026-04-28 14:11:19 [INFO] Question: show first 10 rows
+2026-04-28 14:11:19 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:11:19 [INFO] Prompt ID: 36632377-9001-4ddb-b710-20c8db9850fa
+2026-04-28 14:11:20 [INFO] Generating new code...
+2026-04-28 14:11:20 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show first 10 rows
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:11:21 [INFO] An error occurred during code generation: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:11:21 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:21 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:22 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:11:23 [INFO] An error occurred during code generation: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:11:23 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:23 [INFO] Retrying Code Generation (1/3)...
+2026-04-28 14:11:23 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:23 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:11:24 [INFO] An error occurred during code generation: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:11:24 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:24 [INFO] Retrying Code Generation (2/3)...
+2026-04-28 14:11:24 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:24 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:11:25 [INFO] An error occurred during code generation: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:11:25 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:25 [INFO] Retrying Code Generation (3/3)...
+2026-04-28 14:11:25 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:25 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:11:27 [INFO] An error occurred during code generation: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:11:27 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\app\groq_llm.py", line 58, in call
+    raise Exception(f"Groq API Error: {response.text}")
+Exception: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+2026-04-28 14:11:27 [INFO] Maximum retry attempts exceeded. Last error: Groq API Error: {"error":{"message":"The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2026-04-28 14:13:38 [INFO] Question: show first 10 rows
+2026-04-28 14:13:39 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:13:39 [INFO] Prompt ID: 732040d6-f0fb-453e-ad14-ef0ff92db912
+2026-04-28 14:13:39 [INFO] Generating new code...
+2026-04-28 14:13:39 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show first 10 rows
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:13:42 [INFO] Code Generated:
+import pandas as pd
+
+# SQL query to show first 10 rows
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+
+# Execute the SQL query
+df = execute_sql_query(sql_query)
+
+# Convert the dataframe to a string
+result = {
+    "type": "dataframe",
+    "value": str(df)
+}
+
+print(result)
+2026-04-28 14:13:42 [INFO] Validating code requirements...
+2026-04-28 14:13:42 [INFO] Code validation successful.
+2026-04-28 14:13:42 [INFO] Cleaning the generated code...
+2026-04-28 14:13:42 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': str(df)}
+print(result)
+2026-04-28 14:13:49 [INFO] Retrying execution (1/3)...
+2026-04-28 14:13:49 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+2026-04-28 14:13:50 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': str(df)}
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:13:51 [INFO] Code Generated:
+import pandas as pd
+
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict('records')}
+print(result)
+2026-04-28 14:13:51 [INFO] Validating code requirements...
+2026-04-28 14:13:51 [INFO] Code validation successful.
+2026-04-28 14:13:52 [INFO] Cleaning the generated code...
+2026-04-28 14:13:52 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict('records')}
+print(result)
+2026-04-28 14:13:52 [INFO] Retrying execution (2/3)...
+2026-04-28 14:13:52 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+2026-04-28 14:13:52 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict('records')}
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:13:53 [INFO] Code Generated:
+import pandas as pd
+
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict(orient='records')}
+print(result)
+2026-04-28 14:13:53 [INFO] Validating code requirements...
+2026-04-28 14:13:54 [INFO] Code validation successful.
+2026-04-28 14:13:54 [INFO] Cleaning the generated code...
+2026-04-28 14:13:54 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict(orient='records')}
+print(result)
+2026-04-28 14:13:54 [INFO] Retrying execution (3/3)...
+2026-04-28 14:13:54 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+2026-04-28 14:13:54 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ show first 10 rows
+
+You generated the following Python code:
+import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict(orient='records')}
+print(result)
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\agent\base.py", line 205, in execute_with_retries
+    return self._response_parser.parse(result, code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 17, in parse
+    self._validate_response(result)
+  File "C:\Users\Admin\OneDrive\Documents\Desktop\Bahwan Cybertek - Intern\log_analysis\venv\Lib\site-packages\pandasai\core\response\parser.py", line 53, in _validate_response
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-04-28 14:13:55 [INFO] Code Generated:
+import pandas as pd
+
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict(orient='records')}
+print(result)
+2026-04-28 14:13:55 [INFO] Validating code requirements...
+2026-04-28 14:13:55 [INFO] Code validation successful.
+2026-04-28 14:13:55 [INFO] Cleaning the generated code...
+2026-04-28 14:13:55 [INFO] Executing code: import pandas as pd
+sql_query = """
+SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe
+LIMIT 10
+"""
+df = execute_sql_query(sql_query)
+result = {'type': 'dataframe', 'value': df.to_dict(orient='records')}
+print(result)
+2026-04-28 14:13:55 [INFO] Max retries reached. Error: Invalid output: Expected a Pandas DataFrame or Series, but received an incompatible type.
+2026-04-28 14:50:02 [INFO] Question: show first 10 rows
+2026-04-28 14:50:02 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:50:02 [INFO] Prompt ID: eb224a0d-2d81-43c3-9796-2f4372dfc774
+2026-04-28 14:50:02 [INFO] Generating new code...
+2026-04-28 14:50:02 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show first 10 rows
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:50:03 [INFO] Code Generated:
+import pandas as pd
+
+# Execute SQL query to get the first 10 rows
+result = execute_sql_query("SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe LIMIT 10")
+
+# Declare result variable
+result = {"type": "dataframe", "value": result}
+2026-04-28 14:50:03 [INFO] Validating code requirements...
+2026-04-28 14:50:04 [INFO] Code validation successful.
+2026-04-28 14:50:04 [INFO] Cleaning the generated code...
+2026-04-28 14:50:04 [INFO] Executing code: import pandas as pd
+result = execute_sql_query('SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe LIMIT 10')
+result = {'type': 'dataframe', 'value': result}
+2026-04-28 14:50:04 [INFO] Response generated successfully.
+2026-04-28 14:50:19 [INFO] Question: Give summary statistics
+2026-04-28 14:50:19 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:50:19 [INFO] Prompt ID: a1a8c1bc-c513-48fd-9410-bb722f9bc45d
+2026-04-28 14:50:19 [INFO] Generating new code...
+2026-04-28 14:50:19 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Give summary statistics
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:50:22 [INFO] Code Generated:
+import pandas as pd
+
+# Execute SQL query to get the required table
+table = execute_sql_query("SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe")
+
+# Group by level and calculate summary statistics
+result = table.groupby('level').agg({'timestamp': 'min', 'message': 'count', 'service': 'nunique'})
+
+# Sort the result by count in descending order
+result = result.sort_values('message', ascending=False)
+
+# Declare result variable
+result = {"type": "dataframe", "value": result}
+2026-04-28 14:50:22 [INFO] Validating code requirements...
+2026-04-28 14:50:22 [INFO] Code validation successful.
+2026-04-28 14:50:22 [INFO] Cleaning the generated code...
+2026-04-28 14:50:22 [INFO] Executing code: import pandas as pd
+table = execute_sql_query('SELECT * FROM table_d7c3ab1100924172a5f245b266510dfe')
+result = table.groupby('level').agg({'timestamp': 'min', 'message': 'count', 'service': 'nunique'})
+result = result.sort_values('message', ascending=False)
+result = {'type': 'dataframe', 'value': result}
+2026-04-28 14:50:22 [INFO] Response generated successfully.
+2026-04-28 14:53:35 [INFO] Question: Count total logs
+2026-04-28 14:53:36 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:53:36 [INFO] Prompt ID: 35419254-4afa-4828-84c0-254e3ec7f28b
+2026-04-28 14:53:36 [INFO] Generating new code...
+2026-04-28 14:53:36 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Count total logs
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:53:38 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to count total logs
+result = execute_sql_query("SELECT COUNT(*) FROM table_d7c3ab1100924172a5f245b266510dfe")
+
+# Declare result var
+result = {"type": "number", "value": result.iloc[0, 0]}
+2026-04-28 14:53:38 [INFO] Validating code requirements...
+2026-04-28 14:53:38 [INFO] Code validation successful.
+2026-04-28 14:53:38 [INFO] Cleaning the generated code...
+2026-04-28 14:53:38 [INFO] Executing code: import pandas as pd
+result = execute_sql_query('SELECT COUNT(*) FROM table_d7c3ab1100924172a5f245b266510dfe')
+result = {'type': 'number', 'value': result.iloc[0, 0]}
+2026-04-28 14:53:38 [INFO] Response generated successfully.
+2026-04-28 14:53:50 [INFO] Question: show unique services
+2026-04-28 14:53:50 [INFO] Running PandasAI with groq LLM...
+2026-04-28 14:53:50 [INFO] Prompt ID: e5bad44b-d339-4567-8a46-074d927ca72e
+2026-04-28 14:53:50 [INFO] Generating new code...
+2026-04-28 14:53:50 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_d7c3ab1100924172a5f245b266510dfe" columns="[{"name": "timestamp", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "level", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "message", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "service", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="8x4">
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ show unique services
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-04-28 14:53:57 [INFO] Code Generated:
+# TODO: import the required dependencies
+import pandas as pd
+
+# Execute SQL query to show unique services
+result = execute_sql_query("SELECT DISTINCT service FROM table_d7c3ab1100924172a5f245b266510dfe")
+
+# Declare result var
+result = { "type": "dataframe", "value": result }
+2026-04-28 14:53:57 [INFO] Validating code requirements...
+2026-04-28 14:53:57 [INFO] Code validation successful.
+2026-04-28 14:53:57 [INFO] Cleaning the generated code...
+2026-04-28 14:53:57 [INFO] Executing code: import pandas as pd
+result = execute_sql_query('SELECT DISTINCT service FROM table_d7c3ab1100924172a5f245b266510dfe')
+result = {'type': 'dataframe', 'value': result}
+2026-04-28 14:53:57 [INFO] Response generated successfully.

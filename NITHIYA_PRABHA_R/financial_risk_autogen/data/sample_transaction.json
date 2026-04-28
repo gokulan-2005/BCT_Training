@@ -1,0 +1,35 @@
+[
+  {"user": "A", "amount": 5000, "country": "India"},
+  {"user": "A", "amount": 120000, "country": "UAE"},
+  {"user": "A", "amount": 70000, "country": "Singapore"},
+
+  {"user": "B", "amount": 200, "country": "India"},
+  {"user": "B", "amount": 1500, "country": "India"},
+  {"user": "B", "amount": 3000, "country": "India"},
+
+  {"user": "C", "amount": 95000, "country": "Unknown"},
+  {"user": "C", "amount": 110000, "country": "Unknown"},
+
+  {"user": "D", "amount": 45000, "country": "India"},
+  {"user": "D", "amount": 48000, "country": "India"},
+  {"user": "D", "amount": 47000, "country": "India"},
+
+  {"user": "E", "amount": 200000, "country": "USA"},
+  {"user": "E", "amount": 180000, "country": "USA"},
+
+  {"user": "F", "amount": 60000, "country": "India"},
+  {"user": "F", "amount": 65000, "country": "India"},
+  {"user": "F", "amount": 70000, "country": "India"},
+
+  {"user": "G", "amount": 300, "country": "India"},
+  {"user": "G", "amount": 400, "country": "India"},
+
+  {"user": "H", "amount": 90000, "country": "Russia"},
+  {"user": "H", "amount": 105000, "country": "Russia"},
+
+  {"user": "I", "amount": 25000, "country": "India"},
+  {"user": "I", "amount": 26000, "country": "India"},
+  {"user": "I", "amount": 27000, "country": "India"},
+
+  {"user": "J", "amount": 500000, "country": "Unknown"}
+]

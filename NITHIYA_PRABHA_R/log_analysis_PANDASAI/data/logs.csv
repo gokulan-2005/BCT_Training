@@ -1,0 +1,9 @@
+timestamp,level,message,service
+2026-04-25 10:00:00,INFO,Service started,auth
+2026-04-25 10:05:00,ERROR,Database connection failed,db
+2026-04-25 10:06:00,WARN,High memory usage,api
+2026-04-25 10:10:00,ERROR,Timeout error,api
+2026-04-25 10:20:00,INFO,Request processed,api
+2026-04-25 10:30:00,ERROR,Null pointer exception,backend
+2026-04-25 11:00:00,ERROR,Disk full,db
+2026-04-25 11:10:00,WARN,Slow response,api
